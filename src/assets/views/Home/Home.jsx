@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import Header from "../components/header/Header";
+import Header from "../../components/header/Header";
 
 import "./home.scss";
-import Lista from "../components/lista/Lista";
+import Lista from "../../components/lista/Lista";
 
 const home = ({ data }) => {
-
-  
-
   return (
     <div className="home-container">
       <Header />

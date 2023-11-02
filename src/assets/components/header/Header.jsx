@@ -1,10 +1,18 @@
 import React from 'react'
 import './header.scss'
+import { FaListCheck } from "react-icons/fa6";
+import { handleTheme } from '../../../service/handleTheme';
 
-const Header = () => {
+const Header = (theme) => {
+  
+
+
+
   return (
-    <header>
-     <div><p>Organização</p></div>
+    <header className={theme}>
+     <div>
+      <FaListCheck />
+      <p>Organização</p></div>
 
      <div className='active'><p>Tarefas</p></div>
     </header>

@@ -15,8 +15,6 @@ html {
 
 body {
   overflow-x: hidden;
-
-  background-color: variables.$primary-color;
   height: 100vh;
 }
 
@@ -31,8 +29,8 @@ ul {
 
 button {
  cursor: pointer;
-  background: none;
-  border: none;
+ background-color: transparent;
+ border: none;
   outline: none;
 
   svg:hover {
@@ -41,5 +39,11 @@ button {
   &:active svg {
     color: variables.$secondary-color !important;
 
+  }
+}
+
+@media (prefers-color-scheme:dark) {
+  body{
+  background-color: variables.$primary-color;
   }
 }
