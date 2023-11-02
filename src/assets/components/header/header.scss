@@ -1,42 +1,165 @@
 @use "../../../sass/mixin";
 @use "../../../sass/variables";
 
-header {
-  background-color: variables.$secondary-color;
-
-  display: flex;
-  padding: 20px 0 0 61px;
+%headerSize {
+  width: 295px;
+  height: 100vh;
 }
 
-header div p {
+aside {
+  background-color: variables.$secondary-color;
+  position: absolute;
+
+  display: flex;
+  padding: 20px 0 0 20px;
+  flex-direction: column;
+  align-items: center;
+
+  @extend %headerSize;
+
+  opacity: 0;
+
+  transition: 1s ease-in-out;
+}
+
+aside div p {
   @include mixin.heading3;
   color: variables.$pure-white;
 
   margin: 0;
 }
 
-header div {
+aside div {
   padding: 9px 40px;
 
   border-radius: 10px 10px 0 0;
   display: flex;
   align-items: flex-end;
-
-  svg{
-    color: variables.$pure-white;
-
-    width: 30px;
-    height: 30px;
-
-    margin-right: 15px;
-  }
 }
 
 .active {
   background-color: variables.$pure-white;
 
   p {
-   color: variables.$secondary-color;
+    color: variables.$secondary-color;
+    text-align: center;
   }
 }
 
+.header_container {
+  position: relative;
+  @extend %headerSize;
+
+  transition: 1s ease-in-out;
+}
+
+svg {
+  color: variables.$pure-white;
+
+  width: 30px;
+  height: 30px;
+
+  margin-bottom: 15px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transition: 1s ease-in-out;
+  transform: translateY(-50%) translateX(50%);
+  right: 0;
+
+  cursor: pointer;
+
+  z-index: 10;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+
+  svg {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+  }
+}
+
+.dark {
+  .icoContainer {
+    background-color: variables.$pure-white;
+
+    svg {
+      color: variables.$secondary-color;
+    }
+  }
+}
+
+.light {
+  .icoContainer {
+    background-color: variables.$primary-color;
+
+    svg {
+      color: variables.$pure-white;
+    }
+  }
+}
+
+.show-true {
+  transform: translateX(0);
+  
+}
+
+.header_container.show-true{
+  aside{
+
+
+    opacity: 100;
+  }
+}
+
+.show-false {
+  transform: translateX(-50%);  
+}
+
+.icoContainer.show-false{
+  transform: translateX(0%);  
+}
+
+.header_container.show-false{
+  width: 100px;
+
+  aside{
+    animation-duration: 1s;
+    animation-name: popoff;
+    animation-iteration-count: 1;
+    
+    opacity: 0;
+  }
+}
+
+@keyframes popoff {
+  0%{
+    opacity: 100;
+  }
+  75%{
+    opacity: 0;
+  }
+  
+}
+
+.username{
+  text-transform: capitalize;
+  display: block;
+}
+
+.options{
+  display: block;
+}

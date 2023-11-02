@@ -5,6 +5,7 @@ import Home from "./assets/views/Home/Home";
 import LISTA_DE_TAREFAS from "./mock/bd.mock";
 import Welcome from "./assets/views/Welcome.jsx/Welcome";
 import { handleTheme } from "./service/handleTheme";
+import Tarefa from "./assets/views/Tarefa/Tarefa";
 
 function App() {
   //Atualiza o Tema
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome detectTheme={theme} />} />
         <Route path="/home" element={<Home theme={theme}  data={LISTA_DE_TAREFAS} />} />
+        <Route path="/tarefas/:id" element={<Tarefa />} />
       </Routes>
     </div>
   );

@@ -36,7 +36,7 @@ const Welcome = () => {
   return userName === "" ? (
     <div className={`welcome__container ${theme}__container`}>
       <h1>Olá, seja bem vindo {userName == "" ? "Novato" : userName}</h1>
-      <h2>Escolha o seu nome de aventureiro e siga a diante </h2>
+      <h2>Escolha o um apelido de aventureiro e siga a diante </h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
