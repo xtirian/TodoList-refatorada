@@ -31,8 +31,9 @@
   background-color: variables.$pure-white;
   position: absolute;
 
-  top: 35.3004292%;
-  left: 23.1944444%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 
   display: flex;
   flex-direction: column;
