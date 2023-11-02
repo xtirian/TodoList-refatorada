@@ -7,29 +7,25 @@ import { HiMiniPencilSquare } from "react-icons/hi2";
 import "./lista.scss";
 import ListForm from "../listForm/ListForm";
 import CardDeldit from "../itemDescricao/CardDeldit";
+import { Link } from "react-router-dom";
 
-const Lista = ({ data }) => { 
-
+const Lista = ({ data }) => {
   // FEATURE: LOCAL STORAGE
-  const storedToDoList = JSON.parse(localStorage.getItem('storedToDoList'));
+  const storedToDoList = JSON.parse(localStorage.getItem("storedToDoList"));
 
   //carrega a lista do mock
   const [toDos, setToDos] = useState(storedToDoList || data);
 
-
   useEffect(() => {
-    localStorage.setItem('storedToDoList', JSON.stringify(toDos));    
-
-  }, [toDos] )  
-
+    localStorage.setItem("storedToDoList", JSON.stringify(toDos));
+  }, [toDos]);
 
   const toDoHandler = (newToDo) => {
-    setToDos([...toDos, newToDo]);    
+    setToDos([...toDos, newToDo]);
 
     //adiciona à lista atual a lista anterior + a tarefa nova
 
     //esta função será passada como método ao list form onde trato do formulário que recebe a informação
-    
   };
 
   //altera o status na lista e renderiza a página
@@ -62,13 +58,11 @@ const Lista = ({ data }) => {
   };
 
   //edita o item da página
-  const handleEdit = (index, newTitle) => {    
+  const handleEdit = (index, newTitle) => {
     toDos[index].title = newTitle;
 
     setToDos([...toDos]);
   };
-
-
 
   return (
     <div className="lista_container">
@@ -84,7 +78,9 @@ const Lista = ({ data }) => {
           {toDos.map((item, index) => {
             return (
               <tr key={item.id + index}>
-                <td className="col1">{item.title}</td>
+                <td className="col1">
+                  <Link to={`/tarefas/${item.id}`}>{item.title}</Link>
+                </td>
                 <td className="col2">
                   {/* Nesta parte temos um label com o listener onChange que escuta a as mudanças do input checkbox. Dependendo od status do checkbox ele irá chamar a função de handleStatus para corrigir o ícone na tela */}
                   <label
