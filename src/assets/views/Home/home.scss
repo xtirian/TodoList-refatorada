@@ -14,9 +14,18 @@
   @include mixin.heading1;
   text-align: center;
   margin-bottom: 8.5%;
+  color: inherit;
  }
 }
 
 .home-container{
   display: flex;
+}
+
+.light {
+  color: variables.$primary-color;
+}
+
+.dark {
+  color: variables.$pure-white;
 }

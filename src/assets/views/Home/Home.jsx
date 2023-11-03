@@ -18,7 +18,7 @@ const home = ({ data}) => {
   }, [theme]);
 
   return (
-    <div className="home-container">
+    <div className={`home-container ${theme}`}>
       <Header />      
       <main className="home_content-container">
         <h1>Tarefas de Hoje</h1>

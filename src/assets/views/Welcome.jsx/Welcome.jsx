@@ -24,16 +24,18 @@ const Welcome = () => {
 
   useEffect(() => {
     console.log(userName);
-    if (HandleLS.getInfoLS("name") != "") {
+    if (HandleLS.getInfoLS("name") != "") {      
       setUserName(HandleLS.getInfoLS("name"));
     }
 
     if (HandleLS.getInfoLS("name") == null) {
+      if(userName){
       HandleLS.setInfoLS("name", userName);
+    }
     }
   }, [userName]);
 
-  return userName === "" ? (
+  return !userName ? (
     <div className={`welcome__container ${theme}__container`}>
       <h1>Olá, seja bem vindo {userName == "" ? "Novato" : userName}</h1>
       <h2>Escolha o um apelido de aventureiro e siga a diante </h2>
@@ -49,7 +51,7 @@ const Welcome = () => {
           placeholder="Digite seu nome aqui"
           className={`${theme}-input`}
         />
-        <Button theme={theme}>Texto</Button>
+        <Button theme={theme}>Confirmar</Button>
       </form>
     </div>
   ) : (

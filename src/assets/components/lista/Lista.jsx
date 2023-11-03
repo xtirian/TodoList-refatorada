@@ -8,8 +8,19 @@ import "./lista.scss";
 import ListForm from "../listForm/ListForm";
 import CardDeldit from "../itemDescricao/CardDeldit";
 import { Link } from "react-router-dom";
+import { handleTheme } from "../../../service/handleTheme";
 
 const Lista = ({ data }) => {
+  //Atualiza o Tema
+  const [theme, setTheme] = useState("");
+  useEffect(() => {
+    if (handleTheme.detectTheme() == "dark") {
+      setTheme(handleTheme.detectTheme());
+    } else {
+      setTheme(handleTheme.detectTheme());
+    }
+  }, [theme]);
+
   // FEATURE: LOCAL STORAGE
   const storedToDoList = JSON.parse(localStorage.getItem("storedToDoList"));
 
@@ -65,13 +76,14 @@ const Lista = ({ data }) => {
   };
 
   return (
-    <div className="lista_container">
+    <div className={`lista_container ${theme}`}>
       <table>
         <thead>
           <tr className="caption">
             <th className="col1">Tarefa</th>
-            <th className="col2">Status</th>
-            <th className="col3">Opções</th>
+            <th className="col2">Date</th>
+            <th className="col3">Status</th>
+            <th className="col4">Opções</th>
           </tr>
         </thead>
         <tbody>
@@ -82,6 +94,9 @@ const Lista = ({ data }) => {
                   <Link to={`/tarefas/${item.id}`}>{item.title}</Link>
                 </td>
                 <td className="col2">
+                  {item.date?item.date:"S/ data"}
+                </td>
+                <td className="col3">
                   {/* Nesta parte temos um label com o listener onChange que escuta a as mudanças do input checkbox. Dependendo od status do checkbox ele irá chamar a função de handleStatus para corrigir o ícone na tela */}
                   <label
                     onChange={(e) => {
@@ -114,16 +129,16 @@ const Lista = ({ data }) => {
                     )}
                   </label>
                 </td>
-                <td className="col3">
+                <td className="col4">
                   <button
                     onClick={() => callCard(true, true, item.title, index)}
                   >
-                    <HiMiniPencilSquare size={30} color="white" />
+                    <HiMiniPencilSquare size={30} />
                   </button>
                   <button
                     onClick={() => callCard(true, false, item.title, index)}
                   >
-                    <IoMdTrash size={30} color="white" />
+                    <IoMdTrash size={30} />
                   </button>
                 </td>
               </tr>

@@ -14,6 +14,8 @@ const ListForm = ({ formHandler, listLength }) => {
       title: value,
       description: "Adicione uma descrição...",
       completed: false,
+      date: "",
+      category:[]
     };
 
     formHandler(newToDo);
