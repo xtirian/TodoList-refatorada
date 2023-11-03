@@ -94,7 +94,7 @@ const Lista = ({ data }) => {
                   <Link to={`/tarefas/${item.id}`}>{item.title}</Link>
                 </td>
                 <td className="col2">
-                  {item.date?item.date:"S/ data"}
+                  {item.date?item.date:"Hoje"}
                 </td>
                 <td className="col3">
                   {/* Nesta parte temos um label com o listener onChange que escuta a as mudanças do input checkbox. Dependendo od status do checkbox ele irá chamar a função de handleStatus para corrigir o ícone na tela */}
