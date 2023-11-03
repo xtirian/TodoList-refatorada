@@ -5,10 +5,20 @@ export class HandleLS{
     return localInfo
   }
 
+  static getToDoInfo(id){
+    let localInfo = JSON.parse(localStorage.getItem(`storedToDoList`)) 
+
+
+    return localInfo[id]
+  }
+
   static setInfoLS(infoName, data){
     localStorage.setItem(infoName, JSON.stringify(data));   
+  }
 
-    console.log(data)
+  static setInfoToDo(infoName, data, id){
+    localStorage.setItem(infoName, JSON.stringify(data));   
 
   }
+  
 }

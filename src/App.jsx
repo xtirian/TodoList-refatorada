@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome detectTheme={theme} />} />
         <Route path="/home" element={<Home theme={theme}  data={LISTA_DE_TAREFAS} />} />
-        <Route path="/tarefas/:id" element={<Tarefa />} />
+        <Route path="/tarefas/:taskId" element={<Tarefa />} />
       </Routes>
     </div>
   );
