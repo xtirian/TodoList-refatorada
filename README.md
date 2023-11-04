@@ -17,7 +17,9 @@
 
 Aplicação desenvolvida para listar, visualizar, mudar status, editar e apagar itens da lista, com o objetivo de colocar em práticas a biblioteca de desenvolvimento de interfaces React JS.
 
-- [URL do site para testes](https://to-do-mvyctcrk3-xtirian.vercel.app/)
+Na Refatoração deste projeto foram aplicados gerenciamento de informações do LocalStorage, criadas novas páginas para pegar o nome do usuário uma página para editar as tarefas.
+
+- [URL do site para testes](https://todolist-refact.vercel.app/)
 
 <hr>
 
@@ -103,3 +105,30 @@ const Lista = ({ data }) => {
 Para esta segunda parte eu precisei criar uma ocnstante que recebe o localStorage. Importante ressaltar que eu coloquei ele na primeira linha da função para usá-lo na variável de estado toDos como valor inicial. Assim a pagina quando dá refresh verifica se tem algo salvo e seta no toDos Isto resolve o bug dos refresh que apagava o local storage
 
 
+## Atualização 1.2
+
+Foram adicionadas 2 novas features e 1 feature antiga precisou ser editada.
+1 - A edição aconteceu na lista de tarefas. Adicionei a Data ao item para ter mais uma informação na lista.
+2 - Duas novas view foram adicionadas.
+- A primeira é a página de boas vindas. Ela renderiza 2 maneiras diferentes, considerando se o usuário já está autenticado ou não. Depois apresenta a página de tarefas que já tinha.
+- Caso o usuário clique em uma das tarefas, será direcionado para uma nova página, onde pode editar os itens. Para a edição dos itens usei o seguinte código:
+```jsx
+<input
+            type="text"
+            id="title"
+            maxLength={15}
+            value={toDo.title}
+            onChange={(e) => {
+              let task = toDoList[taskId];
+
+              task.title = e.target.value;
+
+              setToDo(task);
+            }}
+          />
+```
+
+Assim, toda vez que trocar o valor ele atualiza a tarefa aberta na página. Quando o usuário salvar a info, o form chama o método para atualizar o local storage.
+
+- Fiz uma pequena edição para detectar o tema do usuário no momento que acessa a página.
+Preciso voltar no futuro para melhorar esta parte.

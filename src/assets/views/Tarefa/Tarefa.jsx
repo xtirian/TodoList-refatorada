@@ -60,8 +60,6 @@ const Tarefa = () => {
             onChange={(e) => {
               let task = toDoList[taskId];
 
-              e.target.value;
-
               task.title = e.target.value;
 
               setToDo(task);
@@ -79,7 +77,6 @@ const Tarefa = () => {
             onChange={(e) => {
               let task = toDoList[taskId];
 
-              e.target.value;
 
               task.description = e.target.value;
 
@@ -97,8 +94,6 @@ const Tarefa = () => {
             value={toDo.date}
             onChange={(e) => {
               let task = toDoList[taskId];
-
-              e.target.value;
 
               task.date = e.target.value;
 
