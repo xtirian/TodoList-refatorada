@@ -9,62 +9,83 @@
 table {
   width: min(100%, 685px);
 
-  tr{
-   display: grid;
-   grid-template-columns: 42.3357664%  37.5182482% auto;   
+  tr {
+    display: grid;
+    min-width: 600px;
+    grid-template-columns: 40% 20% 30% auto;
   }
 
-  th, td {
-   padding: 0 10px 0 10px;
+  th,
+  td {
+    padding: 0 10px 0 10px;
   }
 
   th {
     @include mixin.bodyL;
-    color: variables.$pure-white;
+    color: inherit;
     border-bottom: 5px solid #d9d9d9;
     border-collapse: collapse;
     padding-bottom: 40px;
     margin-bottom: 18px;
   }
-  td{
-   margin-top: 15px;
-   @include mixin.bodyS;
-   color: variables.$pure-white;
+  td {
+    margin-top: 15px;
+    @include mixin.bodyS;
+    color: inherit;
   }
 
   .col1 {
     display: inline-block;
     text-align: left;
-    
   }
   .col2 {
-    display: inline-block;
     text-align: center;
   }
   .col3 {
     display: inline-block;
+    text-align: center;
+    width: 100%;
+  }
+  .col4 {
+    display: inline-block;
     text-align: right;
 
-   display: flex;
-   justify-content: flex-end;
-   gap: 15px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    button {
+      display: inline;
+      width: 50%;
+    }
   }
 
-  svg:hover{
+  button {
+    color: inherit;  
+  }
+
+  svg {
+    color: inherit;
+  }
+
+  svg:hover {
     transform: scale(1.5);
     cursor: pointer;
-    
   }
 
   input[type="checkbox"]:checked ~ svg {
     color: variables.$secondary-color;
-    
-    &path{
-      fill: currentColor;
 
+    &path {
+      fill: currentColor;
     }
   }
+}
 
-  
-  
+
+.light {
+  color: variables.$primary-color;
+}
+
+.dark {
+  color: variables.$pure-white;
 }

@@ -1,0 +1,74 @@
+@use '../../../sass/variables' as *;
+@use "../../../sass/mixin";
+
+
+.task-container{
+  height: 100vh;
+  display: flex; 
+  align-items: center;
+  
+
+}
+
+.container-dark{
+  color: $pure-white;
+  background-color: $primary-color;
+}
+
+.container-light{
+  color: $primary-color;
+  background-color: $pure-white;;
+}
+
+.contentEditable{
+  
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+
+
+  label{    
+    @include mixin.bodyS;
+    font-weight: 700;
+  }
+  input{
+    left: 0;
+    top:0;
+    border: none;
+    background-color: inherit;
+
+    @include mixin.bodyS;
+    color: inherit;
+    outline: none;
+  }
+  button{
+    color: inherit;
+  }
+
+  
+}
+
+
+.LinkVoltar{
+  font-size: 2rem;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &:hover{
+    transform: scale(1.2) translateX(-50%);
+  }
+}
+
+h2, button{
+  @include mixin.heading3;
+}
+
+button:hover{
+  transform: scale(1.2);
+}

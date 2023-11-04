@@ -7,29 +7,36 @@ import { HiMiniPencilSquare } from "react-icons/hi2";
 import "./lista.scss";
 import ListForm from "../listForm/ListForm";
 import CardDeldit from "../itemDescricao/CardDeldit";
+import { Link } from "react-router-dom";
+import { handleTheme } from "../../../service/handleTheme";
 
-const Lista = ({ data }) => { 
+const Lista = ({ data }) => {
+  //Atualiza o Tema
+  const [theme, setTheme] = useState("");
+  useEffect(() => {
+    if (handleTheme.detectTheme() == "dark") {
+      setTheme(handleTheme.detectTheme());
+    } else {
+      setTheme(handleTheme.detectTheme());
+    }
+  }, [theme]);
 
   // FEATURE: LOCAL STORAGE
-  const storedToDoList = JSON.parse(localStorage.getItem('storedToDoList'));
+  const storedToDoList = JSON.parse(localStorage.getItem("storedToDoList"));
 
   //carrega a lista do mock
   const [toDos, setToDos] = useState(storedToDoList || data);
 
-
   useEffect(() => {
-    localStorage.setItem('storedToDoList', JSON.stringify(toDos));    
-
-  }, [toDos] )  
-
+    localStorage.setItem("storedToDoList", JSON.stringify(toDos));
+  }, [toDos]);
 
   const toDoHandler = (newToDo) => {
-    setToDos([...toDos, newToDo]);    
+    setToDos([...toDos, newToDo]);
 
     //adiciona à lista atual a lista anterior + a tarefa nova
 
     //esta função será passada como método ao list form onde trato do formulário que recebe a informação
-    
   };
 
   //altera o status na lista e renderiza a página
@@ -62,30 +69,34 @@ const Lista = ({ data }) => {
   };
 
   //edita o item da página
-  const handleEdit = (index, newTitle) => {    
+  const handleEdit = (index, newTitle) => {
     toDos[index].title = newTitle;
 
     setToDos([...toDos]);
   };
 
-
-
   return (
-    <div className="lista_container">
+    <div className={`lista_container ${theme}`}>
       <table>
         <thead>
           <tr className="caption">
             <th className="col1">Tarefa</th>
-            <th className="col2">Status</th>
-            <th className="col3">Opções</th>
+            <th className="col2">Date</th>
+            <th className="col3">Status</th>
+            <th className="col4">Opções</th>
           </tr>
         </thead>
         <tbody>
           {toDos.map((item, index) => {
             return (
               <tr key={item.id + index}>
-                <td className="col1">{item.title}</td>
+                <td className="col1">
+                  <Link to={`/tarefas/${item.id}`}>{item.title}</Link>
+                </td>
                 <td className="col2">
+                  {item.date?item.date:"Hoje"}
+                </td>
+                <td className="col3">
                   {/* Nesta parte temos um label com o listener onChange que escuta a as mudanças do input checkbox. Dependendo od status do checkbox ele irá chamar a função de handleStatus para corrigir o ícone na tela */}
                   <label
                     onChange={(e) => {
@@ -118,16 +129,16 @@ const Lista = ({ data }) => {
                     )}
                   </label>
                 </td>
-                <td className="col3">
+                <td className="col4">
                   <button
                     onClick={() => callCard(true, true, item.title, index)}
                   >
-                    <HiMiniPencilSquare size={30} color="white" />
+                    <HiMiniPencilSquare size={30} />
                   </button>
                   <button
                     onClick={() => callCard(true, false, item.title, index)}
                   >
-                    <IoMdTrash size={30} color="white" />
+                    <IoMdTrash size={30} />
                   </button>
                 </td>
               </tr>
