@@ -1,4 +1,5 @@
 @use "../../../sass/variables";
+@use "../../../sass/mixin";
 
 input {
   font-size: 1.6rem;
@@ -30,18 +31,29 @@ input {
     flex-direction: column;
     align-items: center;
   }
-  button{
+  button {
     margin-top: 50px;
   }
 
-  h1 > span{
+  h1 > span {
     text-transform: capitalize;
   }
 
-  a{
-    font-size: 1.6rem;
+  a {
+    @include mixin.bodyS;
+    margin-top: 20px;
     text-decoration: underline;
   }
+}
+
+h1 {
+  @include mixin.heading1;
+}
+h2 {
+  @include mixin.heading3;
+}
+p {
+  @include mixin.bodyS;
 }
 
 .dark__container {

@@ -16,9 +16,5 @@ export class HandleLS{
     localStorage.setItem(infoName, JSON.stringify(data));   
   }
 
-  static setInfoToDo(infoName, data, id){
-    localStorage.setItem(infoName, JSON.stringify(data));   
-
-  }
   
 }

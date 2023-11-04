@@ -3,28 +3,33 @@
 
 
 .form_container{
- width: min(100%, 685px);
+ width: min(100%, 600px);
  padding: 12px 30px 0 30px;
+ 
 
 }
 
-.listForm {
- display: flex;
- justify-content:space-between;
+.listForm { 
+  width: 100%;
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;
+
  input[type="text"]{
   background: none;
   border: none;
-  color: variables.$pure-white;
-  @include mixin.bodyI;
   outline: none;
-  width: 100%;
+  @include mixin.bodyI;
  }
-
  button{
   background: none;
   border: none;
   outline: none;
-
+  color: inherit;
+  svg{
+    color: inherit;
+    margin: 0;
+   }
   &:hover svg{
    color: variables.$primary-color;
   }
@@ -32,3 +37,19 @@
  }
 
 }
+
+
+
+ 
+
+ 
+
+ .dark{
+
+  color: variables.$pure-white;
+ }
+
+ .light{
+  color: variables.$primary-color;
+
+ }

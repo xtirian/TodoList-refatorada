@@ -59,8 +59,9 @@ const Welcome = () => {
       <h1>
         Olá, <span>{userName}</span>
         <br />
-        Seu nome já foi definido
       </h1>
+      <h2>
+        Seu nome já foi definido</h2>
       <p>Aperte no botão abaixo para seguir com as suas tarefas</p>
       <Link to={"/home"}>Ver minhas tarefas</Link>
     </div>

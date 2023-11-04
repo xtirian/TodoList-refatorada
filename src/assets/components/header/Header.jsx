@@ -19,7 +19,7 @@ const Header = () => {
   }, [theme]);
 
   //header swipe
-  const [popFlag, setPopFlag] = useState(true);
+  const [popFlag, setPopFlag] = useState(false);
 
   const userName = HandleLS.getInfoLS("name");
 
@@ -43,7 +43,7 @@ const Header = () => {
             <p>Ver Tarefas</p>
             <p>* Opção 1</p>
             <p>* Opção 2</p>
-            <p>* Opção 3</p>
+            <p>* Apenas para teste</p>
 
             <p></p>
           </div>          
