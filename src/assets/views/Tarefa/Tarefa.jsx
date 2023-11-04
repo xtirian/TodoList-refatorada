@@ -27,9 +27,6 @@ const Tarefa = () => {
     setToDo(HandleLS.getToDoInfo(taskId));
   }, []);
 
-  useEffect(() => {
-    console.log(toDo);
-  }, [toDo]);
 
   return (
     <div className={`container-${theme} task-container`}>
@@ -47,6 +44,8 @@ const Tarefa = () => {
 
           console.log(newToDoList);
           HandleLS.setInfoLS("storedToDoList", newToDoList);
+
+          alert("Conteúdo salvo")
         }}
       >
         <h2>Clique na informação para editá-la: <br/><br/></h2>
